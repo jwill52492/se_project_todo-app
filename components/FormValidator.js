@@ -2,15 +2,26 @@ class FormValidator {
   constructor(settings, formEl) {
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
-    this._errorclass = settings.errorclass;
+    this._errorClass = settings.errorClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formSelector = settings.formSelector;
-    this._showInputError = settings.showInputError;
-    this._hideInputError = settings._hideInputError;
     this._formEl = formEl;
     this.settings = settings;
+  }
 
+  _showInputError = (formEl, inputElement, errorMessage) => {
+    const errorMessageElement = formEl.querySelector(`#${inputElement.id}-error`);
+    errorMessageElement.textContent = errorMessage;
+    inputElement.classList.add(this._inputErrorClass);
+    errorMessageElement.classList.add(this._errorClass);
+  }
+
+  _hideInputError = (formEl, inputElement) => {
+    const errorMessageElement = formEl.querySelector(`#${inputElement.id}-error`);
+    errorMessageElement.textContent = "";
+    inputElement.classList.remove(this._inputErrorClass);
+    errorMessageElement.classList.remove(this._errorClass)
   }
 
   _checkInputValidity(inputElement) {
@@ -21,7 +32,7 @@ class FormValidator {
         inputElement.validationMessage,
       );
     } else {
-      this._hideInputError(inputElement);
+      this._hideInputError(this._formEl, inputElement);
     }
   }
 
