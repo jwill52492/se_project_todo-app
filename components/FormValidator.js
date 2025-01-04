@@ -81,10 +81,10 @@ class FormValidator {
   }
 
   resetValidation() {
-    this._inputList.forEach((input) => {
-      this._hideInputError(this._formEl, input);
-    });
+    this._formEl.reset();
+      this._disableSubmitButton();
   }
+
 
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
