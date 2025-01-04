@@ -10,6 +10,7 @@ class FormValidator {
     this.settings = settings;
   }
 
+
   _showInputError = (formEl, inputElement, errorMessage) => {
     const errorMessageElement = formEl.querySelector(`#${inputElement.id}-error`);
     errorMessageElement.textContent = errorMessage;
@@ -79,8 +80,15 @@ class FormValidator {
     });
   }
 
+  resetValidation() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(this._formEl, input);
+    });
+  }
+
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
+      this.resetValidation();
       evt.preventDefault();
     });
     this._setEventListeners();
