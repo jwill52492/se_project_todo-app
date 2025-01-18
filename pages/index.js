@@ -28,7 +28,10 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
-  todoCounter.updateTotal(completed);
+  todoCounter.updateTotal();
+  if (completed) {
+    todoCounter.updateCompleted(false);
+  }
 }
 
 const generateTodo = (data) => {
@@ -94,7 +97,6 @@ addTodoCloseBtn.addEventListener("click", () => {
   //addTodoPopup.close();
   //closeModal(addTodoPopupEl);
 //});
-
 
 //initialTodos.forEach((item) => {
   //renderTodo(item);
