@@ -29,9 +29,7 @@ function handleCheck(completed) {
 
 function handleDelete(completed) {
   todoCounter.updateTotal();
-  if (completed) {
-    todoCounter.updateCompleted(false);
-  }
+
 }
 
 const generateTodo = (data) => {
@@ -56,7 +54,7 @@ const addTodoPopup = new PopupWithForm({
   handleFormSubmit: (values) => {
     console.log(values);
     const name = values.name;
-    const dateInput = values.name;
+    const dateInput = values.date;
 
     const date = new Date(dateInput);
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
