@@ -62,8 +62,8 @@ const addTodoPopup = new PopupWithForm({
 
     const id = uuidv4();
     const valueswithId = { name, date, id };
-    const todoElement = generateTodo(valueswithId);
-    section.addItem(todoElement);
+    renderTodo(valueswithId);
+    //renderTodo(todoElement);
     todoCounter.updateTotal(true);
     addTodoPopup.close();
   },
