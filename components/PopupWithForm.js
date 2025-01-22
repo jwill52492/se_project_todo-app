@@ -25,7 +25,7 @@ class PopupWithForm extends Popup {
       const inputValues = this._getInputValues();
 
       this._handleFormSubmit(inputValues);
-      return this._getInputValues();
+      //return this._getInputValues();
     });
   }
 }

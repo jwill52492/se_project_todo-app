@@ -38,14 +38,15 @@ const generateTodo = (data) => {
   return todoElement;
 }
 
-const section = new Section({
+const renderTodo = (item) => {
+  const todo = generateTodo(item);
+  section.addItem(todo);
+};
+
+const section = new Section ({
   items: initialTodos,
-  renderer(item) {
-    const todo = generateTodo(item);
-    todosList.append(todo);
-  },
-  containerSelector: (".todos__list"),
-})
+  renderer: renderTodo
+}, ".todos__list");
 
 section.renderItems();
 
@@ -75,9 +76,7 @@ addTodoButton.addEventListener("click", () => {
   //openModal(addTodoPopupEl);
 });
 
-addTodoCloseBtn.addEventListener("click", () => {
-  addTodoPopup.close();
-});
+
   //closeModal(addTodoPopupEl);
 //});
 
